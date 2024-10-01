@@ -26,7 +26,7 @@ export default function Navbar() {
   }
 
   return (
-    <header className="flex justify-between px-4 items-center mb-8">
+    <header className="flex justify-between p-4 items-center mb-2">
       <motion.div 
         className="flex items-center space-x-2"
         initial={{ opacity: 0, y: -20 }}
