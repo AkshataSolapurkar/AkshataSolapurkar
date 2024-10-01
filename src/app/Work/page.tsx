@@ -1,104 +1,120 @@
 "use client"
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import React, { useState,useRef } from 'react';
+import { motion, useScroll, useSpring, useInView } from 'framer-motion'
+import { ArrowUpRight, Briefcase } from 'lucide-react'
 
 const Page = () => {
-  const [hoveredJob, setHoveredJob] = useState(null);
+  const [expandedJob, setExpandedJob] = useState(null)
+  const containerRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  })
 
   const workExperience = [
     {
       id: 1,
-      title: 'Senior Product Designer',
-      company: 'Tech Innovators Inc.',
-      period: '2021 - Present',
-      description: 'Led design initiatives for flagship products, resulting in a 40% increase in user engagement.',
+      title: 'Frontend Developer',
+      company: 'Leadlly',
+      period: '2024 - Present',
+      description1: 'Built the first version of the company website using Next.js and Framer Motion, delivering a dynamic and responsive user experience.',
+      description2: 'Developed and implemented the full UI for the mentor dashboard, ensuring seamless functionality and an intuitive design.',
     },
-    {
-      id: 2,
-      title: 'UX/UI Designer',
-      company: 'CreativeSolutions Co.',
-      period: '2018 - 2021',
-      description: 'Redesigned core user flows, improving conversion rates by 25% across multiple product lines.',
-    },
-    {
-      id: 3,
-      title: 'Product Design Intern',
-      company: 'StartupVision',
-      period: '2017 - 2018',
-      description: 'Contributed to the design of an award-winning mobile app, gaining 100K+ downloads in the first month.',
-    },
-  ];
+  ]
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
+  const JobCard = ({ job, index }:any) => {
+    const cardRef = useRef(null)
+    const isInView = useInView(cardRef, { once: true, margin: "-100px" })
+    
+    const cardVariants = {
+      hidden: { y: 20, opacity: 0 },
+      visible: { 
+        y: 0, 
+        opacity: 1,
+        transition: { 
+          type: "spring",
+          damping: 18,
+          stiffness: 60,
+          delay: index * 0.1 
+        }
+      }
+    }
 
-  const itemVariants = {
-    hidden: { x: -50, opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 100,
-      },
-    },
-  };
+    return (
+      <motion.div
+        ref={cardRef}
+        variants={cardVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        className="mb-12 relative"
+      >
+        <motion.div 
+          className="ml-8 p-6 bg-white bg-opacity-80 backdrop-blur-sm rounded-lg shadow-lg"
+          whileHover={{ y: -5, boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}
+          transition={{ type: 'spring', stiffness: 300 }}
+        >
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">{job.title}</h2>
+          <p className="text-gray-600 font-semibold">{job.company}</p>
+          <p className="text-sm text-gray-500 mb-4">{job.period}</p>
+
+          <div className="space-y-3 mb-4">
+            <div className="flex items-start gap-3">
+              <div className="w-2 h-2 bg-yellow-400 rounded-full mt-2"></div>
+              <p className="text-gray-700">{job.description1}</p>
+            </div>
+            <div className="flex items-start gap-3">
+              <div className="w-2 h-2 bg-yellow-400 rounded-full mt-2"></div>
+              <p className="text-gray-700">{job.description2}</p>
+            </div>
+          </div>
+          <motion.div
+            className="inline-flex items-center cursor-pointer text-yellow-500 font-semibold"
+            whileHover={{ x: 5 }}
+            transition={{ type: 'spring', stiffness: 400 }}
+          >
+            Learn more <ArrowUpRight className="ml-2 w-5 h-5" />
+          </motion.div>
+        </motion.div>
+        <motion.div
+          className="absolute left-0 w-8 h-8 bg-yellow-400 rounded-full -ml-4 mt-3 flex items-center justify-center"
+          whileHover={{ scale: 1.1 }}
+          transition={{ type: 'spring', stiffness: 300 }}
+        >
+          <Briefcase className="w-4 h-4 text-white" />
+        </motion.div>
+      </motion.div>
+    )
+  }
+
+  const progress = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 })
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <h1 className="text-4xl font-bold mb-12">Work Experience</h1>
-      <motion.div
-        className="relative"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+    <div 
+      className="max-h-screen p-6 overflow-hidden"
+      style={{
+        background: `radial-gradient(circle at 100% 35%, rgba(250, 204, 21, 0.6), transparent 25%), radial-gradient(circle at 70% 150%, rgba(30, 144, 255, 0.5), transparent 45%), linear-gradient(to right top, rgb(240, 240, 240), rgb(249, 249, 249), rgb(242, 242, 242), transparent 10%)`,
+      }}
+      ref={containerRef}
+    >
+      <motion.h1 
+        className="text-4xl font-bold mb-12 text-gray-800"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
       >
+        Work Experience
+      </motion.h1>
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-yellow-400 origin-left z-50"
+        style={{ scaleX: progress }}
+      />
+      <div className="max-w-3xl mx-auto relative">
         {workExperience.map((job, index) => (
-          <motion.div
-            key={job.id}
-            className="mb-16 relative"
-            variants={itemVariants}
-            onHoverStart={() => setHoveredJob(job.id)}
-            onHoverEnd={() => setHoveredJob(null)}
-          >
-            <motion.div
-              className="absolute left-0 w-1 h-full bg-yellow-400"
-              initial={{ height: 0 }}
-              animate={{ height: '100%' }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-            />
-            <div className="ml-8">
-              <h2 className="text-2xl font-bold">{job.title}</h2>
-              <p className="text-gray-600">{job.company}</p>
-              <p className="text-sm text-gray-500 mb-2">{job.period}</p>
-              <p className="mb-4">{job.description}</p>
-              <motion.div
-                className="inline-flex items-center cursor-pointer text-yellow-500"
-                whileHover={{ x: 5 }}
-                transition={{ type: 'spring', stiffness: 400 }}
-              >
-                Learn more <ArrowUpRight className="ml-2 w-5 h-5" />
-              </motion.div>
-            </div>
-            <motion.div
-              className="absolute left-0 w-4 h-4 bg-yellow-400 rounded-full -ml-1.5 mt-1.5"
-              initial={{ scale: 0 }}
-              animate={{ scale: hoveredJob === job.id ? 1.5 : 1 }}
-              transition={{ type: 'spring', stiffness: 300 }}
-            />
-          </motion.div>
+          <JobCard key={job.id} job={job} index={index} />
         ))}
-      </motion.div>
+      </div>
     </div>
-  );
+  )
 };
 
 export default Page;
