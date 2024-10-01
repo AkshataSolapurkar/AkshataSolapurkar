@@ -19,7 +19,7 @@ const Footer = () => {
           transition={{ delay: 0.2, duration: 0.5 }}
         >
           <p className="text-sm text-gray-600 font-medium tracking-wide">
-            © 2024 All rights reserved to @akshatasolapurkar2024
+            © 2024 All rights reserved to @AkshataSolapurkar
           </p>
         </motion.div>
       </div>
