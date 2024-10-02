@@ -136,7 +136,7 @@ export default function Home() {
   
   <Link href="mailto:your-solapurkarakshata@gmail.com">
   <motion.button
-    className="bg-black text-white font-semibold px-6 py-2 rounded-[15px] shadow-lg"
+    className="bg-black text-white text-[8px] font-semibold px-6 py-2 rounded-[10px] lg:rounded-[15px] shadow-lg"
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
   >
@@ -151,7 +151,7 @@ export default function Home() {
     {/* Dribbble Icon */}
     <Link href="https://github.com/AkshataSolapurkar">
     <motion.div
-      className="flex items-center justify-center w-10 h-10 bg-white rounded-[15px] shadow-lg"
+      className="flex items-center justify-center lg:w-10 lg:h-10 bg-white rounded-[15px] shadow-lg"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
@@ -162,7 +162,7 @@ export default function Home() {
 
     {/* Instagram Icon */}
     <motion.div
-      className="flex items-center justify-center w-10 h-10 bg-white rounded-[15px] shadow-lg"
+      className="flex items-center justify-center lg:w-10 lg:h-10 bg-white rounded-[15px] shadow-lg"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
@@ -172,7 +172,7 @@ export default function Home() {
     {/* Twitter Icon */}
     <Link href="https://x.com/akshasolapurkar">
     <motion.div
-      className="flex items-center justify-center w-10 h-10 bg-white rounded-[15px] shadow-lg"
+      className="flex items-center justify-center lg:w-10 lg:h-10 bg-white rounded-[15px] shadow-lg"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
@@ -184,7 +184,7 @@ export default function Home() {
     {/* LinkedIn Icon */}
     <Link href="https://www.linkedin.com/in/akshatasolapurkar/">
     <motion.div
-      className="flex items-center justify-center w-10 h-10 bg-white rounded-[15px] shadow-lg"
+      className="flex items-center justify-center w-6 h-6 lg:w-10 lg:h-10 bg-white rounded-[15px] shadow-lg"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
