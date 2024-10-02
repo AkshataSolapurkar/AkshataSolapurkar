@@ -9,7 +9,7 @@ export default function Navbar() {
   const [navLinks, setNavLinks] = useState([
     { id: 'Home', title: 'Home', url: '/' },
     { id: 'Work', title: 'Work', url: '/Work' },
-    { id: 'Resume', title: 'Resume', url: '#' },
+    { id: 'Resume', title: 'Resume', url: 'https://drive.google.com/file/d/1bdudIaxz0QvwemZuLz3h9CpCUDSKCgSr/view?usp=sharing' },
   ])
   
   const [isDarkMode, setIsDarkMode] = useState(false)
@@ -50,7 +50,6 @@ export default function Navbar() {
             </motion.li>
           ))}
         </motion.ul>
-
       </nav>
     </header>
   )
