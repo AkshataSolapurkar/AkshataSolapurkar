@@ -9,7 +9,7 @@ export default function Navbar() {
   const [navLinks, setNavLinks] = useState([
     { id: 'Home', title: 'Home', url: '/' },
     { id: 'Work', title: 'Work', url: '/Work' },
-    { id: 'Resume', title: 'Resume', url: '#' },
+    { id: 'Resume', title: 'Resume', url: 'https://drive.google.com/file/d/1bdudIaxz0QvwemZuLz3h9CpCUDSKCgSr/view?usp=sharing' },
   ])
   
   const [isDarkMode, setIsDarkMode] = useState(false)
@@ -26,7 +26,7 @@ export default function Navbar() {
   }
 
   return (
-    <header className="flex justify-between px-4 items-center mb-8">
+    <header className="flex justify-between p-4 items-center mb-2">
       <motion.div 
         className="flex items-center space-x-2"
         initial={{ opacity: 0, y: -20 }}
@@ -50,16 +50,6 @@ export default function Navbar() {
             </motion.li>
           ))}
         </motion.ul>
-
-        <motion.button
-          onClick={toggleDarkMode}
-          className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-200"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          aria-label="Toggle dark mode"
-        >
-          {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-        </motion.button>
       </nav>
     </header>
   )
