@@ -9,7 +9,7 @@ export default function Navbar() {
   const [navLinks, setNavLinks] = useState([
     { id: 'Home', title: 'Home', url: '/' },
     { id: 'Work', title: 'Work', url: '/Work' },
-    { id: 'Resume', title: 'Resume', url: 'https://drive.google.com/file/d/1bdudIaxz0QvwemZuLz3h9CpCUDSKCgSr/view?usp=sharing' },
+    { id: 'Resume', title: 'Resume', url: 'https://drive.google.com/file/d/1_YLG1tlR-GntVms4VjXJsYw_LT03UScc/view?usp=sharing' },
   ])
   
   const [isDarkMode, setIsDarkMode] = useState(false)
