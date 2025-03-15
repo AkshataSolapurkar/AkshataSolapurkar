@@ -40,7 +40,7 @@ const ExpandableName = () => {
 
   return (
     <div 
-      className="inline-block cursor-pointer min-w-[20px]"
+      className="inline-block text-black cursor-pointer min-w-[20px]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

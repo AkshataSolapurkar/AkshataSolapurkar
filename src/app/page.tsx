@@ -45,7 +45,7 @@ export default function Home() {
 
   return (
     <motion.div 
-      className={`p-4 transition-colors duration-300 ease-in-out ${isDarkMode ? 'dark bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
+      className={`p-4 bg-white transition-colors duration-300 ease-in-out ${isDarkMode ? 'dark bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
       initial={false}
       animate={isDarkMode ? { backgroundColor: "#111827" } : { backgroundColor: "#ffffff" }}
     >

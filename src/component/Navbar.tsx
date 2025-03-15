@@ -26,7 +26,7 @@ export default function Navbar() {
   }
 
   return (
-    <header className="flex justify-between p-4 bg-white items-center mb-2">
+    <header className="flex justify-between p-4 items-center mb-2">
       <motion.div 
         className="flex items-center space-x-2"
         initial={{ opacity: 0, y: -20 }}
@@ -46,7 +46,7 @@ export default function Navbar() {
         >
           {navLinks.map((link, index) => (
             <motion.li key={link.id} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }}>
-              <a href={link.url} className="hover:text-yellow-400 transition-colors">{link.title}</a>
+              <a href={link.url} className="hover:text-yellow-400 text-black transition-colors">{link.title}</a>
             </motion.li>
           ))}
         </motion.ul>
